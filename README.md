@@ -1,14 +1,15 @@
-Markdown# Cross-API E-Commerce Sales Pipeline
+# Cross-API E-Commerce Sales Pipeline
 
 ![Status](https://img.shields.io/badge/status-functional-success)
 ![Python](https://img.shields.io/badge/Python-3.11%2B-blue)
 ![Airflow](https://img.shields.io/badge/Apache%20Airflow-2.9.2-orange)
 ![Docker](https://img.shields.io/badge/Docker-Compose-blue)
 ![Postgres](https://img.shields.io/badge/PostgreSQL-16-green)
+![pytest](https://img.shields.io/badge/Pytest-8.0-green)
 
 **Comparação inteligente de preços e métricas entre eBay e Mercado Livre**
 
-Projeto completo de Engenharia de Dados que coleta, transforma e analisa dados de produtos de dois grandes marketplaces, entregando um dashboard interativo com KPIs claros e visualizações comparativas.
+Projeto completo de Engenharia de Dados que coleta, transforma e analisa dados de produtos de mocks de dois grandes marketplaces, entregando um dashboard interativo com KPIs claros e visualizações comparativas.
 
 ## 🎯 Objetivo do Projeto
 
@@ -50,7 +51,7 @@ Construir um pipeline ETL orquestrado que:
 
 ![Dashboard E-Commerce Pipeline](dashboard.png)
 
-## 🚀 Como Executar
+## Como Executar
 
 ### Pré-requisitos
 - Docker Desktop + Docker Compose
@@ -59,7 +60,7 @@ Construir um pipeline ETL orquestrado que:
 ### Passo a passo
 ```bash
 # 1. Clone o repositório
-git clone https://github.com/seuusuario/cross-api-ecommerce-pipeline.git
+git clone https://https://github.com/RSangDev/Cross-API-Sales.git
 cd cross-api-ecommerce-pipeline
 
 # 2. Gere uma Fernet key (obrigatório)
@@ -109,7 +110,7 @@ text├── dags/
 └── README.md
 ```
 
-🔧 Arquitetura
+## Arquitetura
 ```bash
 
 Mercado Livre API Mock ─┐
@@ -123,12 +124,9 @@ eBay API Mock ──────────┘
                  Apache Airflow (orquestração + scheduling)
 ```
 
-🚀 Próximos Passos (Roadmap)
+## Próximos Passos
 
  Integração com APIs reais (eBay Browse API + Mercado Livre Items API)
  Real-time stream com Kafka + Spark Streaming
  Camadas Silver/Gold
- Testes unitários + Great Expectations para data quality
-
-📄 Licença
-MIT License
+ Testes unitários
