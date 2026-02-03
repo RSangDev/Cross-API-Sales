@@ -1,0 +1,79 @@
+name: ecommerce-pipeline
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1225
+      POSTGRES_DB: ecommerce_db  
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  airflow:
+    container_name: airflow
+
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
+    environment:
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql://postgres:1225@postgres:5432/airflow_db
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__CORE__LOAD_EXAMPLES=false
+      - AIRFLOW__CORE__FERNET_KEY=Pp277aURgsN9wdIJYdXmx_xnF5WtVg0WeRjwiwg8vTc=
+      - DB_HOST=postgres  
+      - DB_PORT=5432
+      - DB_NAME=ecommerce_db
+      - DB_USER=postgres
+      - DB_PASS=1225
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - .:/app
+      - ./entrypoint.sh:/entrypoint.sh
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mock-api:
+        condition: service_healthy
+    command: ["bash", "/entrypoint.sh"]
+
+
+  mock-api:
+    container_name: mock-api
+
+    build:
+
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    depends_on:
+      - postgres
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=ecommerce_db
+      - DB_USER=postgres
+      - DB_PASS=1225
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 5s  
+      timeout: 3s
+      retries: 10       
+      start_period: 90s
+    
+ 
+
+volumes:
+  postgres_data:

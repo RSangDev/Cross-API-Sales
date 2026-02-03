@@ -1,0 +1,213 @@
+Manual:
+*** Found local files:
+***   * /opt/airflow/logs/dag_id=ecommerce_pipeline/run_id=manual__2026-02-02T23:36:50.262257+00:00/task_id=run_etl/attempt=1.log
+[2026-02-02, 23:36:52 UTC] {local_task_job_runner.py:120} ▼ Pre task execution logs
+[2026-02-02, 23:36:52 UTC] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ecommerce_pipeline.run_etl manual__2026-02-02T23:36:50.262257+00:00 [queued]>
+[2026-02-02, 23:36:52 UTC] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ecommerce_pipeline.run_etl manual__2026-02-02T23:36:50.262257+00:00 [queued]>
+[2026-02-02, 23:36:52 UTC] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-02-02, 23:36:52 UTC] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): run_etl> on 2026-02-02 23:36:50.262257+00:00
+[2026-02-02, 23:36:52 UTC] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'ecommerce_pipeline', 'run_etl', 'manual__2026-02-02T23:36:50.262257+00:00', '--job-id', '2', '--raw', '--subdir', 'DAGS_FOLDER/ecommerce_dag.py', '--cfg-path', '/tmp/tmpkrnl7k2g']
+[2026-02-02, 23:36:52 UTC] {standard_task_runner.py:91} INFO - Job 2: Subtask run_etl
+[2026-02-02, 23:36:52 UTC] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=254) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-02-02, 23:36:52 UTC] {standard_task_runner.py:63} INFO - Started process 258 to run task
+[2026-02-02, 23:36:52 UTC] {task_command.py:426} INFO - Running <TaskInstance: ecommerce_pipeline.run_etl manual__2026-02-02T23:36:50.262257+00:00 [running]> on host f51680d4b60e
+[2026-02-02, 23:36:53 UTC] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='rafael' AIRFLOW_CTX_DAG_ID='ecommerce_pipeline' AIRFLOW_CTX_TASK_ID='run_etl' AIRFLOW_CTX_EXECUTION_DATE='2026-02-02T23:36:50.262257+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-02-02T23:36:50.262257+00:00'
+[2026-02-02, 23:36:53 UTC] {taskinstance.py:430} ▲▲▲ Log group end
+[2026-02-02, 23:36:53 UTC] {logging_mixin.py:188} INFO - Dados carregados na tabela produtos_ebay
+[2026-02-02, 23:36:53 UTC] {logging_mixin.py:188} INFO - Dados carregados na tabela produtos_ml
+[2026-02-02, 23:36:53 UTC] {taskinstance.py:441} ▼ Post task execution logs
+[2026-02-02, 23:36:53 UTC] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/etl.py", line 330, in run_etl
+    generate_dashboard()
+  File "/app/etl.py", line 143, in generate_dashboard
+    fig1.update_layout(template=template, barmode='group', title_text='Preço Médio por Categoria',
+  File "/home/airflow/.local/lib/python3.12/site-packages/plotly/graph_objs/_figure.py", line 788, in update_layout
+    return super(Figure, self).update_layout(dict1, overwrite, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/plotly/basedatatypes.py", line 1391, in update_layout
+    self.layout.update(dict1, overwrite=overwrite, **kwargs)
+  File "/home/airflow/.local/lib/python3.12/site-packages/plotly/basedatatypes.py", line 5137, in update
+    BaseFigure._perform_update(self, kwargs, overwrite=overwrite)
+  File "/home/airflow/.local/lib/python3.12/site-packages/plotly/basedatatypes.py", line 3919, in _perform_update
+    BaseFigure._perform_update(plotly_obj[key], val)
+  File "/home/airflow/.local/lib/python3.12/site-packages/plotly/basedatatypes.py", line 3940, in _perform_update
+    plotly_obj[key] = val
+    ~~~~~~~~~~^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/plotly/basedatatypes.py", line 4866, in __setitem__
+    self._set_compound_prop(prop, value)
+  File "/home/airflow/.local/lib/python3.12/site-packages/plotly/basedatatypes.py", line 5277, in _set_compound_prop
+    val = validator.validate_coerce(val, skip_invalid=self._skip_invalid)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/_plotly_utils/basevalidators.py", line 2493, in validate_coerce
+    self.raise_invalid_val(v)
+  File "/home/airflow/.local/lib/python3.12/site-packages/_plotly_utils/basevalidators.py", line 296, in raise_invalid_val
+    raise ValueError(
+ValueError: 
+    Invalid value of type 'plotly.graph_objs.layout._template.Template' received for the 'layout' property of layout.template
+        Received value: layout.Template({
+    'layout': {'font': {'color': '#e2e8f0', 'family': 'Segoe UI, sans-serif', 'size': 13},
+               'legend': {'bgcolor': 'rgba(0,0,0,0)', 'font': {'color': '#e2e8f0'}},
+               'paper_bgcolor': '#0f1923',
+               'plot_bgcolor': '#1a2733',
+               'xaxis': {'showgrid': False, 'tickfont': {'color': '#e2e8f0'}, 'zerolinecolor': 'rgba(0,0,0,0)'},
+               'yaxis': {'gridcolor': '#2d3a4a',
+                         'showgrid': True,
+                         'tickfont': {'color': '#e2e8f0'},
+                         'zerolinecolor': 'rgba(0,0,0,0)'}}
+})
+    The 'layout' property is an instance of Layout
+    that may be specified as:
+      - An instance of :class:`plotly.graph_objs.Layout`
+      - A dict of string/value properties that will be passed
+        to the Layout constructor
+        Supported dict properties:
+            
+[2026-02-02, 23:36:53 UTC] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=ecommerce_pipeline, task_id=run_etl, run_id=manual__2026-02-02T23:36:50.262257+00:00, execution_date=20260202T233650, start_date=20260202T233652, end_date=20260202T233653
+[2026-02-02, 23:36:53 UTC] {standard_task_runner.py:110} ERROR - Failed to execute job 2 for task run_etl (
+    Invalid value of type 'plotly.graph_objs.layout._template.Template' received for the 'layout' property of layout.template
+        Received value: layout.Template({
+    'layout': {'font': {'color': '#e2e8f0', 'family': 'Segoe UI, sans-serif', 'size': 13},
+               'legend': {'bgcolor': 'rgba(0,0,0,0)', 'font': {'color': '#e2e8f0'}},
+               'paper_bgcolor': '#0f1923',
+               'plot_bgcolor': '#1a2733',
+               'xaxis': {'showgrid': False, 'tickfont': {'color': '#e2e8f0'}, 'zerolinecolor': 'rgba(0,0,0,0)'},
+               'yaxis': {'gridcolor': '#2d3a4a',
+                         'showgrid': True,
+                         'tickfont': {'color': '#e2e8f0'},
+                         'zerolinecolor': 'rgba(0,0,0,0)'}}
+})
+    The 'layout' property is an instance of Layout
+    that may be specified as:
+      - An instance of :class:`plotly.graph_objs.Layout`
+      - A dict of string/value properties that will be passed
+        to the Layout constructor
+        Supported dict properties:
+            
+; 258)
+[2026-02-02, 23:36:53 UTC] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2026-02-02, 23:36:53 UTC] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-02-02, 23:36:53 UTC] {local_task_job_runner.py:222} ▲▲▲ Log group end
+
+
+Schedule
+:f51680d4b60e
+*** Found local files:
+***   * /opt/airflow/logs/dag_id=ecommerce_pipeline/run_id=manual__2026-02-02T23:36:50.262257+00:00/task_id=run_etl/attempt=1.log
+[2026-02-02, 23:36:52 UTC] {local_task_job_runner.py:120} ▼ Pre task execution logs
+[2026-02-02, 23:36:52 UTC] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ecommerce_pipeline.run_etl manual__2026-02-02T23:36:50.262257+00:00 [queued]>
+[2026-02-02, 23:36:52 UTC] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ecommerce_pipeline.run_etl manual__2026-02-02T23:36:50.262257+00:00 [queued]>
+[2026-02-02, 23:36:52 UTC] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-02-02, 23:36:52 UTC] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): run_etl> on 2026-02-02 23:36:50.262257+00:00
+[2026-02-02, 23:36:52 UTC] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'ecommerce_pipeline', 'run_etl', 'manual__2026-02-02T23:36:50.262257+00:00', '--job-id', '2', '--raw', '--subdir', 'DAGS_FOLDER/ecommerce_dag.py', '--cfg-path', '/tmp/tmpkrnl7k2g']
+[2026-02-02, 23:36:52 UTC] {standard_task_runner.py:91} INFO - Job 2: Subtask run_etl
+[2026-02-02, 23:36:52 UTC] {logging_mixin.py:188} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=254) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-02-02, 23:36:52 UTC] {standard_task_runner.py:63} INFO - Started process 258 to run task
+[2026-02-02, 23:36:52 UTC] {task_command.py:426} INFO - Running <TaskInstance: ecommerce_pipeline.run_etl manual__2026-02-02T23:36:50.262257+00:00 [running]> on host f51680d4b60e
+[2026-02-02, 23:36:53 UTC] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='rafael' AIRFLOW_CTX_DAG_ID='ecommerce_pipeline' AIRFLOW_CTX_TASK_ID='run_etl' AIRFLOW_CTX_EXECUTION_DATE='2026-02-02T23:36:50.262257+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-02-02T23:36:50.262257+00:00'
+[2026-02-02, 23:36:53 UTC] {taskinstance.py:430} ▲▲▲ Log group end
+[2026-02-02, 23:36:53 UTC] {logging_mixin.py:188} INFO - Dados carregados na tabela produtos_ebay
+[2026-02-02, 23:36:53 UTC] {logging_mixin.py:188} INFO - Dados carregados na tabela produtos_ml
+[2026-02-02, 23:36:53 UTC] {taskinstance.py:441} ▼ Post task execution logs
+[2026-02-02, 23:36:53 UTC] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/etl.py", line 330, in run_etl
+    generate_dashboard()
+  File "/app/etl.py", line 143, in generate_dashboard
+    fig1.update_layout(template=template, barmode='group', title_text='Preço Médio por Categoria',
+  File "/home/airflow/.local/lib/python3.12/site-packages/plotly/graph_objs/_figure.py", line 788, in update_layout
+    return super(Figure, self).update_layout(dict1, overwrite, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/plotly/basedatatypes.py", line 1391, in update_layout
+    self.layout.update(dict1, overwrite=overwrite, **kwargs)
+  File "/home/airflow/.local/lib/python3.12/site-packages/plotly/basedatatypes.py", line 5137, in update
+    BaseFigure._perform_update(self, kwargs, overwrite=overwrite)
+  File "/home/airflow/.local/lib/python3.12/site-packages/plotly/basedatatypes.py", line 3919, in _perform_update
+    BaseFigure._perform_update(plotly_obj[key], val)
+  File "/home/airflow/.local/lib/python3.12/site-packages/plotly/basedatatypes.py", line 3940, in _perform_update
+    plotly_obj[key] = val
+    ~~~~~~~~~~^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/plotly/basedatatypes.py", line 4866, in __setitem__
+    self._set_compound_prop(prop, value)
+  File "/home/airflow/.local/lib/python3.12/site-packages/plotly/basedatatypes.py", line 5277, in _set_compound_prop
+    val = validator.validate_coerce(val, skip_invalid=self._skip_invalid)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/_plotly_utils/basevalidators.py", line 2493, in validate_coerce
+    self.raise_invalid_val(v)
+  File "/home/airflow/.local/lib/python3.12/site-packages/_plotly_utils/basevalidators.py", line 296, in raise_invalid_val
+    raise ValueError(
+ValueError: 
+    Invalid value of type 'plotly.graph_objs.layout._template.Template' received for the 'layout' property of layout.template
+        Received value: layout.Template({
+    'layout': {'font': {'color': '#e2e8f0', 'family': 'Segoe UI, sans-serif', 'size': 13},
+               'legend': {'bgcolor': 'rgba(0,0,0,0)', 'font': {'color': '#e2e8f0'}},
+               'paper_bgcolor': '#0f1923',
+               'plot_bgcolor': '#1a2733',
+               'xaxis': {'showgrid': False, 'tickfont': {'color': '#e2e8f0'}, 'zerolinecolor': 'rgba(0,0,0,0)'},
+               'yaxis': {'gridcolor': '#2d3a4a',
+                         'showgrid': True,
+                         'tickfont': {'color': '#e2e8f0'},
+                         'zerolinecolor': 'rgba(0,0,0,0)'}}
+})
+    The 'layout' property is an instance of Layout
+    that may be specified as:
+      - An instance of :class:`plotly.graph_objs.Layout`
+      - A dict of string/value properties that will be passed
+        to the Layout constructor
+        Supported dict properties:
+            
+[2026-02-02, 23:36:53 UTC] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=ecommerce_pipeline, task_id=run_etl, run_id=manual__2026-02-02T23:36:50.262257+00:00, execution_date=20260202T233650, start_date=20260202T233652, end_date=20260202T233653
+[2026-02-02, 23:36:53 UTC] {standard_task_runner.py:110} ERROR - Failed to execute job 2 for task run_etl (
+    Invalid value of type 'plotly.graph_objs.layout._template.Template' received for the 'layout' property of layout.template
+        Received value: layout.Template({
+    'layout': {'font': {'color': '#e2e8f0', 'family': 'Segoe UI, sans-serif', 'size': 13},
+               'legend': {'bgcolor': 'rgba(0,0,0,0)', 'font': {'color': '#e2e8f0'}},
+               'paper_bgcolor': '#0f1923',
+               'plot_bgcolor': '#1a2733',
+               'xaxis': {'showgrid': False, 'tickfont': {'color': '#e2e8f0'}, 'zerolinecolor': 'rgba(0,0,0,0)'},
+               'yaxis': {'gridcolor': '#2d3a4a',
+                         'showgrid': True,
+                         'tickfont': {'color': '#e2e8f0'},
+                         'zerolinecolor': 'rgba(0,0,0,0)'}}
+})
+    The 'layout' property is an instance of Layout
+    that may be specified as:
+      - An instance of :class:`plotly.graph_objs.Layout`
+      - A dict of string/value properties that will be passed
+        to the Layout constructor
+        Supported dict properties:
+            
+; 258)
+[2026-02-02, 23:36:53 UTC] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2026-02-02, 23:36:53 UTC] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-02-02, 23:36:53 UTC] {local_task_job_runner.py:222} ▲▲▲ Log group end
