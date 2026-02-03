@@ -1,4 +1,4 @@
-Markdown# Cross-API E-Commerce Sales Pipeline
+# Cross-API E-Commerce Sales Pipeline
 
 ![Status](https://img.shields.io/badge/status-functional-success)
 ![Python](https://img.shields.io/badge/Python-3.11%2B-blue)
@@ -8,7 +8,7 @@ Markdown# Cross-API E-Commerce Sales Pipeline
 
 **Comparação inteligente de preços e métricas entre eBay e Mercado Livre**
 
-Projeto completo de Engenharia de Dados que coleta, transforma e analisa dados de produtos de dois grandes marketplaces, entregando um dashboard interativo com KPIs claros e visualizações comparativas.
+Projeto completo de Engenharia de Dados que coleta, transforma e analisa dados de produtos de mocks de dois grandes marketplaces, entregando um dashboard interativo com KPIs claros e visualizações comparativas.
 
 ## 🎯 Objetivo do Projeto
 
@@ -50,7 +50,7 @@ Construir um pipeline ETL orquestrado que:
 
 ![Dashboard E-Commerce Pipeline](dashboard.png)
 
-## 🚀 Como Executar
+## Como Executar
 
 ### Pré-requisitos
 - Docker Desktop + Docker Compose
@@ -109,7 +109,7 @@ text├── dags/
 └── README.md
 ```
 
-🔧 Arquitetura
+## Arquitetura
 ```bash
 
 Mercado Livre API Mock ─┐
@@ -123,12 +123,9 @@ eBay API Mock ──────────┘
                  Apache Airflow (orquestração + scheduling)
 ```
 
-🚀 Próximos Passos (Roadmap)
+## Próximos Passos
 
  Integração com APIs reais (eBay Browse API + Mercado Livre Items API)
  Real-time stream com Kafka + Spark Streaming
  Camadas Silver/Gold
- Testes unitários + Great Expectations para data quality
-
-📄 Licença
-MIT License
+ Testes unitários
