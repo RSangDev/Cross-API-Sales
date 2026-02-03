@@ -5,6 +5,7 @@
 ![Airflow](https://img.shields.io/badge/Apache%20Airflow-2.9.2-orange)
 ![Docker](https://img.shields.io/badge/Docker-Compose-blue)
 ![Postgres](https://img.shields.io/badge/PostgreSQL-16-green)
+![pytest](https://img.shields.io)
 
 **Comparação inteligente de preços e métricas entre eBay e Mercado Livre**
 
