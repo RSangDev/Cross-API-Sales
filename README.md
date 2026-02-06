@@ -130,9 +130,9 @@ eBay API Mock ──────────┘
 ```
 
 ## Próximos Passos
-## Próximos Passos
 
  Integração com APIs reais (eBay Browse API + Mercado Livre Items API)
  Real-time stream com Kafka + Spark Streaming
  Camadas Silver/Gold
- Testes unitários
+ Testes unitários ✅ 
+ Github actions  ✅ 
