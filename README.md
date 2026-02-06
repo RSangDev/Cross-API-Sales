@@ -1,5 +1,6 @@
 # Cross-API E-Commerce Sales Pipeline
-# Cross-API E-Commerce Sales Pipeline
+
+![CI](https://github.com/RSangDev/Cross-API-Sales/actions/workflows/ci.yml/badge.svg)
 
 ![Status](https://img.shields.io/badge/status-functional-success)
 ![Python](https://img.shields.io/badge/Python-3.11%2B-blue)
@@ -131,7 +132,11 @@ eBay API Mock ──────────┘
 ## Próximos Passos
 
  Integração com APIs reais (eBay Browse API + Mercado Livre Items API)
+
  Real-time stream com Kafka + Spark Streaming
+
  Camadas Silver/Gold
+
  Testes unitários ✅ 
+
  Github actions  ✅ 
