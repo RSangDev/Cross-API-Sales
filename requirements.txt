@@ -9,3 +9,4 @@ plotly==5.22.0
 sqlalchemy == 1.4.52
 pytest==8.0.0
 pytest-mock==3.14.0
+black==26.1.0
