@@ -11,13 +11,13 @@ os.environ["DB_PASS"] = "test_pass"
 
 # Ajusta path para import do etl.py (da raiz)
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-from etl import (
+from etl import (  # noqa: E402
     fetch_data,
     clean_and_transform,
     load_to_db,
     generate_dashboard,
     run_etl,
-)  # noqa: E402
+)
 
 
 @pytest.fixture
