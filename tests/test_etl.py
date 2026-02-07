@@ -2,8 +2,7 @@ import sys
 import os
 import pytest
 import pandas as pd
-from unittest.mock import patch, MagicMock
-from sqlalchemy import create_engine, text
+from unittest.mock import MagicMock
 
 # CRITICAL: Setar env vars ANTES de importar etl
 # Porque DB_USER e DB_PASS são lidos no momento do import
@@ -12,7 +11,13 @@ os.environ["DB_PASS"] = "test_pass"
 
 # Ajusta path para import do etl.py (da raiz)
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-from etl import fetch_data, clean_and_transform, load_to_db, generate_dashboard, run_etl
+from etl import (
+    fetch_data,
+    clean_and_transform,
+    load_to_db,
+    generate_dashboard,
+    run_etl,
+)  # noqa: E402
 
 
 @pytest.fixture

@@ -25,6 +25,8 @@ jobs:
       - name: Rodar Black
         run: black --check .
 
+      - name: Rodar Flake8
+        run: flake8 .
 
       - name: Rodar testes
         run: pytest

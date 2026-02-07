@@ -62,7 +62,8 @@ def load_to_db(df, table_name):
             )
         """))
 
-    # Insere dados com upserts via loop e execute (ON CONFLICT) - usando begin() para transação
+    # Insere dados com upserts via loop e execute (ON CONFLICT)
+    # - usando begin() para transação
     with engine.begin() as conn:
         for _, row in df.iterrows():
             insert_query = text(f"""
