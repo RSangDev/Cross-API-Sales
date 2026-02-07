@@ -8,12 +8,11 @@
 ![Docker](https://img.shields.io/badge/Docker-Compose-blue)
 ![Postgres](https://img.shields.io/badge/PostgreSQL-16-green)
 ![pytest](https://img.shields.io/badge/Pytest-8.0-green)
-![Coverage](https://img.shields.io/badge/coverage-69%25-yellow)
+![Coverage](https://img.shields.io/badge/coverage-97%25-green)
 
 
 **Comparação inteligente de preços e métricas entre eBay e Mercado Livre**
 
-Projeto completo de Engenharia de Dados que coleta, transforma e analisa dados de produtos de mocks de dois grandes marketplaces, entregando um dashboard interativo com KPIs claros e visualizações comparativas.
 Projeto completo de Engenharia de Dados que coleta, transforma e analisa dados de produtos de mocks de dois grandes marketplaces, entregando um dashboard interativo com KPIs claros e visualizações comparativas.
 
 ## 🎯 Objetivo do Projeto
@@ -117,7 +116,6 @@ text├── dags/
 ```
 
 ## Arquitetura
-## Arquitetura
 ```bash
 
 Mercado Livre API Mock ─┐
@@ -142,3 +140,31 @@ eBay API Mock ──────────┘
  Testes unitários ✅ 
 
  Github actions  ✅ 
+
+ ## 🧪 Qualidade e Automação de Testes
+
+Este projeto adota práticas de qualidade inspiradas em ambientes de produção, com **validação automática a cada push**.
+
+### ✔ Testes Automatizados
+- Testes unitários cobrindo as principais etapas do pipeline (ETL, transformações e carga)
+- Uso de `pytest` com isolamento de dependências externas (DB, variáveis de ambiente)
+
+### ✔ Cobertura de Código
+- Cobertura de testes medida com `pytest-cov`
+- **Cobertura atual: 97%**
+- Pipeline falha automaticamente caso a cobertura fique abaixo do limite configurado
+
+### ✔ Qualidade de Código
+- **Black** para formatação automática e consistente
+- **Flake8** para análise estática e detecção de erros comuns
+- Regras alinhadas para evitar conflitos entre formatter e linter
+
+### ✔ Integração Contínua (CI)
+- Pipeline configurado com **GitHub Actions**
+- Executa automaticamente:
+  1. Verificação de formatação (Black)
+  2. Análise estática (Flake8)
+  3. Testes automatizados com coverage
+- Garante que apenas código validado passe no pipeline
+
+Essas práticas asseguram **confiabilidade, manutenibilidade e segurança** no desenvolvimento do pipeline.
