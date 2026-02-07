@@ -8,6 +8,8 @@
 ![Docker](https://img.shields.io/badge/Docker-Compose-blue)
 ![Postgres](https://img.shields.io/badge/PostgreSQL-16-green)
 ![pytest](https://img.shields.io/badge/Pytest-8.0-green)
+![Coverage](https://img.shields.io/badge/coverage-69%25-yellow)
+
 
 **Comparação inteligente de preços e métricas entre eBay e Mercado Livre**
 
